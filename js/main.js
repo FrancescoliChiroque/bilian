@@ -29,14 +29,44 @@
     });
   });
 
-  // ===== ACORDEÓN DE LA DISEÑADORA =====
-  var panels = document.querySelectorAll('.ph-panel');
-  panels.forEach(function (panel) {
-    panel.addEventListener('click', function () {
-      panels.forEach(function (p) { p.classList.remove('active'); });
-      panel.classList.add('active');
-    });
+  // ===== SLIDER DE LA DISEÑADORA =====
+  var slider = document.getElementById('ph-slider');
+  var track = document.getElementById('ph-track');
+  var slides = track.querySelectorAll('.ph-slide');
+  var dotsWrap = document.getElementById('ph-dots');
+  var currentSlide = 0;
+
+  slides.forEach(function (_, i) {
+    var dot = document.createElement('button');
+    dot.className = 'ph-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Ir a la foto ' + (i + 1));
+    dot.addEventListener('click', function () { goToSlide(i); });
+    dotsWrap.appendChild(dot);
   });
+  var dots = dotsWrap.querySelectorAll('.ph-dot');
+
+  var goToSlide = function (i) {
+    currentSlide = (i + slides.length) % slides.length;
+    track.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+    dots.forEach(function (d, di) { d.classList.toggle('active', di === currentSlide); });
+  };
+
+  document.getElementById('ph-prev').addEventListener('click', function () { goToSlide(currentSlide - 1); });
+  document.getElementById('ph-next').addEventListener('click', function () { goToSlide(currentSlide + 1); });
+
+  // Swipe táctil
+  var startX = 0;
+  var dragging = false;
+  slider.addEventListener('touchstart', function (e) {
+    startX = e.touches[0].clientX;
+    dragging = true;
+  }, { passive: true });
+  slider.addEventListener('touchend', function (e) {
+    if (!dragging) return;
+    dragging = false;
+    var diff = e.changedTouches[0].clientX - startX;
+    if (Math.abs(diff) > 40) goToSlide(currentSlide + (diff < 0 ? 1 : -1));
+  }, { passive: true });
 
   // ===== VISOR DE FOTOS (GALLERY) =====
   var galleries = {

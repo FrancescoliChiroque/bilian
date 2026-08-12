@@ -296,38 +296,32 @@ a { text-decoration: none; color: inherit; }
   text-transform: uppercase;
   color: var(--pardo);
 }
-/* ============ ACORDEÓN DE LA DISEÑADORA ============ */
-.ph-accordion {
-  display: flex;
-  height: 520px;
-  gap: 8px;
-  border-radius: 2px;
-  overflow: hidden;
-}
-.ph-panel {
+/* ============ SLIDER DE LA DISEÑADORA ============ */
+.ph-slider {
   position: relative;
-  flex: 1;
-  min-width: 0;
-  cursor: pointer;
+  height: 520px;
   border-radius: 2px;
   overflow: hidden;
-  transition: flex 0.6s cubic-bezier(0.7, 0, 0.3, 1);
+  touch-action: pan-y;
 }
-.ph-panel img {
+.ph-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.7, 0, 0.3, 1);
+}
+.ph-slide {
+  position: relative;
+  flex: 0 0 100%;
+  margin: 0;
+  overflow: hidden;
+}
+.ph-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center top;
-  opacity: 0.8;
-  transition: opacity 0.4s ease, transform 0.8s ease;
 }
-.ph-panel:hover { flex: 2.2; }
-.ph-panel.active { flex: 1 1 72%; }
-.ph-panel.active img {
-  opacity: 1;
-  transform: scale(1.03);
-}
-.ph-panel-label {
+.ph-slide figcaption {
   position: absolute;
   left: 0; right: 0; bottom: 0;
   padding: 16px 18px;
@@ -339,6 +333,49 @@ a { text-decoration: none; color: inherit; }
   text-shadow: 0 1px 6px rgba(74, 68, 60, 0.5);
   background: linear-gradient(to top, rgba(74, 68, 60, 0.55), transparent);
 }
+.ph-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background: rgba(74, 68, 60, 0.35);
+  border: 1px solid rgba(251, 246, 235, 0.5);
+  color: var(--cream);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.ph-nav:hover {
+  background: var(--rose);
+  border-color: var(--rose);
+}
+.ph-nav--prev { left: 16px; }
+.ph-nav--next { right: 16px; }
+.ph-dots {
+  position: absolute;
+  left: 0; right: 0; bottom: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  z-index: 5;
+}
+.ph-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(251, 246, 235, 0.5);
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.ph-dot.active { background: var(--peach); }
 
 /* ============ SERVICIOS ============ */
 .servicios {
@@ -600,7 +637,7 @@ footer {
 /* ============ RESPONSIVE ============ */
 @media (max-width: 992px) {
   .filosofia .wrap { grid-template-columns: 1fr; gap: 48px; }
-  .ph-accordion { height: 380px; }
+  .ph-slider { height: 380px; }
   .cards { grid-template-columns: 1fr 1fr; }
   .card:last-child { grid-column: span 2; }
 }
@@ -637,8 +674,8 @@ footer {
   .cards { grid-template-columns: 1fr; }
   .card:last-child { grid-column: span 1; }
   .ph-stats { grid-template-columns: 1fr; }
-  .ph-accordion { height: 320px; }
-  .ph-panel-label { display: none; }
+  .ph-slider { height: 320px; }
+  .ph-nav { display: none; }
   .cta-row { flex-direction: column; width: 100%; }
   .cta-row .btn { width: 100%; text-align: center; }
   .whatsapp-btn { width: 100%; }
