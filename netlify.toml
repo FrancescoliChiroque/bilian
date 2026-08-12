@@ -1,0 +1,6 @@
+# Configuración de despliegue para Netlify
+[build]
+  publish = "/"
+
+[build.environment]
+  NODE_VERSION = "22"
