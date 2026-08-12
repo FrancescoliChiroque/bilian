@@ -68,6 +68,44 @@
     if (Math.abs(diff) > 40) goToSlide(currentSlide + (diff < 0 ? 1 : -1));
   }, { passive: true });
 
+  // ===== SLIDER DE TESTIMONIOS =====
+  var tmSlider = document.getElementById('tm-slider');
+  var tmTrack = document.getElementById('tm-track');
+  var tmSlides = tmTrack.querySelectorAll('.tm-slide');
+  var tmDotsWrap = document.getElementById('tm-dots');
+  var currentTm = 0;
+
+  tmSlides.forEach(function (_, i) {
+    var dot = document.createElement('button');
+    dot.className = 'tm-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Ir al testimonio ' + (i + 1));
+    dot.addEventListener('click', function () { goToTm(i); });
+    tmDotsWrap.appendChild(dot);
+  });
+  var tmDots = tmDotsWrap.querySelectorAll('.tm-dot');
+
+  var goToTm = function (i) {
+    currentTm = (i + tmSlides.length) % tmSlides.length;
+    tmTrack.style.transform = 'translateX(-' + (currentTm * 100) + '%)';
+    tmDots.forEach(function (d, di) { d.classList.toggle('active', di === currentTm); });
+  };
+
+  document.getElementById('tm-prev').addEventListener('click', function () { goToTm(currentTm - 1); });
+  document.getElementById('tm-next').addEventListener('click', function () { goToTm(currentTm + 1); });
+
+  var tmStartX = 0;
+  var tmDragging = false;
+  tmSlider.addEventListener('touchstart', function (e) {
+    tmStartX = e.touches[0].clientX;
+    tmDragging = true;
+  }, { passive: true });
+  tmSlider.addEventListener('touchend', function (e) {
+    if (!tmDragging) return;
+    tmDragging = false;
+    var diff = e.changedTouches[0].clientX - tmStartX;
+    if (Math.abs(diff) > 40) goToTm(currentTm + (diff < 0 ? 1 : -1));
+  }, { passive: true });
+
   // ===== VISOR DE FOTOS (GALLERY) =====
   var galleries = {
     novias: {

@@ -474,6 +474,63 @@ a { text-decoration: none; color: inherit; }
   margin-top: 16px;
   color: rgba(74, 68, 60, 0.8);
 }
+.tm-slider {
+  position: relative;
+  margin: 0 auto;
+  max-width: 820px;
+  touch-action: pan-y;
+}
+.tm-track {
+  display: flex;
+  align-items: flex-start;
+  transition: transform 0.6s cubic-bezier(0.7, 0, 0.3, 1);
+}
+.tm-slide {
+  flex: 0 0 100%;
+  padding: 0 60px;
+}
+.tm-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background: rgba(74, 68, 60, 0.25);
+  border: 1px solid rgba(74, 68, 60, 0.35);
+  color: var(--pardo-deep);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.tm-nav:hover {
+  background: var(--peach);
+  border-color: var(--peach);
+}
+.tm-nav--prev { left: 0; }
+.tm-nav--next { right: 0; }
+.tm-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 26px;
+}
+.tm-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(74, 68, 60, 0.3);
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.tm-dot.active { background: var(--peach); }
 
 /* ============ CTA FINAL ============ */
 .cta-final {
@@ -676,6 +733,8 @@ footer {
   .ph-stats { grid-template-columns: 1fr; }
   .ph-slider { height: 320px; }
   .ph-nav { display: none; }
+  .tm-nav { display: none; }
+  .tm-slide { padding: 0 24px; }
   .cta-row { flex-direction: column; width: 100%; }
   .cta-row .btn { width: 100%; text-align: center; }
   .whatsapp-btn { width: 100%; }
