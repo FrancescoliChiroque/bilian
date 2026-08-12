@@ -51,8 +51,12 @@
         'img/Coctel/coctel4.jpeg', 'img/Coctel/coctel5.jpeg', 'img/Coctel/coctel6.jpeg',
         'img/Coctel/coctel7.jpeg', 'img/Coctel/coctel8.jpeg', 'img/Coctel/coctel9.jpeg',
         'img/Coctel/coctel10.jpeg', 'img/Coctel/coctel11.jpeg', 'img/Coctel/coctel12.jpeg',
-        'img/Coctel/coctel13.jpeg'
+        'img/Coctel/coctel13.jpeg', 'img/Coctel/coctel14.jpeg', 'img/Coctel/coctel15.jpeg'
       ]
+    },
+    ninas: {
+      title: 'Colección Niñas',
+      images: ['img/Niñas/niñas1.jpeg', 'img/Niñas/niñas2.jpeg', 'img/Niñas/niñas3.jpeg']
     }
   };
 
