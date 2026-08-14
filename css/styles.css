@@ -106,7 +106,7 @@ a { text-decoration: none; color: inherit; }
   width: 26px;
   height: 2px;
   margin: 6px auto;
-  background: var(--pardo);
+  background: var(--cream);
   transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
 }
 
@@ -154,7 +154,6 @@ a { text-decoration: none; color: inherit; }
   top: 0; left: 0; right: 0;
   z-index: 20;
   padding: 28px 0;
-  background: #F5F5F5;
 }
 .nav .wrap {
   display: flex;
@@ -165,7 +164,7 @@ a { text-decoration: none; color: inherit; }
   height: 96px;
   width: auto;
   display: block;
-  filter: drop-shadow(0 2px 6px rgba(107, 99, 90, 0.35));
+  filter: drop-shadow(0 3px 10px rgba(74, 68, 60, 0.45));
 }
 .nav-links {
   display: flex;
@@ -176,7 +175,7 @@ a { text-decoration: none; color: inherit; }
   font-size: 13px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--pardo);
+  color: var(--cream);
   opacity: 0.85;
   transition: opacity 0.3s ease;
 }
