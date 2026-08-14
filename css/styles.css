@@ -728,6 +728,17 @@ footer {
 }
 
 @media (max-width: 600px) {
+  .gallery-fig {
+    width: min(90vw, 90vw);
+    max-height: none;
+    aspect-ratio: 1 / 1;
+  }
+  .gallery-fig img {
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    object-fit: cover;
+  }
   .cards { grid-template-columns: 1fr; }
   .card:last-child { grid-column: span 1; }
   .ph-stats { grid-template-columns: 1fr; }
